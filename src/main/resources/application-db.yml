@@ -1,0 +1,5 @@
+driver-class-name: com.mysql.jdbc.Driver
+url: jdbc:mysql://47.94.129.204:3306/itoken?useUnicode=true&charact
+name: root
+password: root
+
