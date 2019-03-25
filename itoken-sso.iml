@@ -28,7 +28,7 @@
     <orderEntry type="module" module-name="itoken-core" />
     <orderEntry type="library" name="Maven: junit:junit:4.12" level="project" />
     <orderEntry type="library" name="Maven: io.jsonwebtoken:jjwt-api:0.10.5" level="project" />
-    <orderEntry type="library" scope="RUNTIME" name="Maven: io.jsonwebtoken:jjwt-impl:0.10.5" level="project" />
+    <orderEntry type="library" name="Maven: io.jsonwebtoken:jjwt-impl:0.10.5" level="project" />
     <orderEntry type="library" scope="RUNTIME" name="Maven: io.jsonwebtoken:jjwt-jackson:0.10.5" level="project" />
     <orderEntry type="library" name="Maven: org.bouncycastle:bcprov-jdk15on:1.60" level="project" />
     <orderEntry type="library" name="Maven: org.bouncycastle:bcprov-jdk16:1.46" level="project" />
