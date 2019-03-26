@@ -9,4 +9,12 @@
         <result column="role_id" property="roleId"/>
     </resultMap>
 
+    <select id="selectListByUserId" resultType="com.draper.itoken.sso.domain.Role">
+        SELECT
+          r.id, r.name, r.note
+        FROM role r
+        LEFT JOIN user_role ur ON r.id = ur.role_id
+        WHERE ur.user_id = #{userId}
+    </select>
+
 </mapper>
