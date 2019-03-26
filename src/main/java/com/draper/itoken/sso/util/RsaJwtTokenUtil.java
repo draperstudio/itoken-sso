@@ -17,7 +17,7 @@ import java.util.Date;
  * @author draper_hxy
  */
 @Component
-public class JwtTokenUtil {
+public class RsaJwtTokenUtil {
 
     private static final long serialVersionUID = -5625635588908941275L;
 
