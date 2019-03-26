@@ -36,6 +36,10 @@ public class JwtTokenFilter extends OncePerRequestFilter {
         if (authHeader != null) {
             String authToken = authHeader;
 
+            if (authHeader.startsWith("Bearer ")) {
+                authToken = authHeader.substring(authToken.indexOf(" ") + 1, authToken.length());
+            }
+
             String username = rsaJwtTokenUtil.getSubject(authToken);
             if (username != null && SecurityContextHolder.getContext().getAuthentication() == null) {
 
