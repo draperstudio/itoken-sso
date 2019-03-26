@@ -1,21 +1,21 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.draper.itoken.sso.dao.UserMapper">
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.draper.itoken.sso.dao.RoleMapper">
 
     <!-- 通用查询映射结果 -->
-    <resultMap id="BaseResultMap" type="com.draper.itoken.sso.domain.User">
+    <resultMap id="BaseResultMap" type="com.draper.itoken.sso.domain.Role">
         <id column="id" property="id"/>
-        <result column="create_at" property="createAt"/>
-        <result column="update_at" property="updateAt"/>
-        <result column="username" property="username"/>
-        <result column="password" property="password"/>
-        <collection property="roleList" ofType="com.draper.itoken.sso.domain.Role" javaType="ArrayList" select="com.draper.itoken.sso.dao.RoleMapper">
-            <id column="id" property="id"/>
-            <result column="name" property="name"/>
-        </collection>
+        <result column="name" property="name"/>
+        <result column="note" property="note"/>
     </resultMap>
 
-    <select id="selectRoles" resultType="com.draper.itoken.sso.domain.Role">
+    <select id="selectListByUserId" resultType="com.draper.itoken.sso.domain.Role">
+        SELECT
+          r.id, r.name, r.note
+        FROM role r
+        LEFT JOIN user_role ur ON r.id = ur.role_id
+        WHERE ur.user_id = #{userId}
     </select>
 
 </mapper>

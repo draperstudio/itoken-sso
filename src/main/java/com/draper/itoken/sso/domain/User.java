@@ -21,6 +21,12 @@ public class User implements UserDetails {
     @TableId(value = "id", type = IdType.AUTO)
     private Long id;
 
+    @TableField("create_at")
+    private String createAt;
+
+    @TableField("update_at")
+    private String updateAt;
+
     @TableField("username")
     private String username;
 
@@ -66,15 +72,6 @@ public class User implements UserDetails {
     @Override
     public boolean isEnabled() {
         return true;
-    }
-
-    public static void main(String[] args) {
-        User user = new User();
-        user.setUsername("admin");
-        user.setPassword("admin");
-        UserDetails details = user;
-
-        System.out.println(details.getPassword());
     }
 
 }
