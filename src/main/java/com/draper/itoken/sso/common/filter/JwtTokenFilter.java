@@ -1,7 +1,8 @@
-package com.draper.itoken.sso.filter;
+package com.draper.itoken.sso.common.filter;
 
+import com.draper.itoken.sso.common.util.RedisUtil;
 import com.draper.itoken.sso.domain.Const;
-import com.draper.itoken.sso.util.RsaJwtTokenUtil;
+import com.draper.itoken.sso.common.util.RsaJwtTokenUtil;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
@@ -29,6 +30,9 @@ public class JwtTokenFilter extends OncePerRequestFilter {
     @Autowired
     private RsaJwtTokenUtil rsaJwtTokenUtil;
 
+    @Autowired
+    private RedisUtil redisUtil;
+
     @Override
     protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain filterChain) throws ServletException, IOException {
         String authHeader = request.getHeader(Const.HEADER_STRING);
@@ -38,6 +42,13 @@ public class JwtTokenFilter extends OncePerRequestFilter {
 
             if (authHeader.startsWith("Bearer ")) {
                 authToken = authHeader.substring(authToken.indexOf(" ") + 1, authToken.length());
+            }
+
+            // redis 没有 token 则证明未登录过，不用花费时间进一步计算
+            if (!redisUtil.hasKey(authToken)) {
+                log.info("Redis 未拥有缓存 token");
+                filterChain.doFilter(request, response);
+                return;
             }
 
             String username = rsaJwtTokenUtil.getSubject(authToken);

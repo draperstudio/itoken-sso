@@ -1,6 +1,6 @@
-package com.draper.itoken.sso.config;
+package com.draper.itoken.sso.common.config;
 
-import com.draper.itoken.sso.filter.JwtTokenFilter;
+import com.draper.itoken.sso.common.filter.JwtTokenFilter;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.http.HttpMethod;

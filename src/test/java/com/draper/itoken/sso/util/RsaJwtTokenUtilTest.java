@@ -1,7 +1,6 @@
 package com.draper.itoken.sso.util;
 
-import io.jsonwebtoken.Claims;
-import io.jsonwebtoken.Jws;
+import com.draper.itoken.sso.common.util.RsaJwtTokenUtil;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -28,6 +27,5 @@ public class RsaJwtTokenUtilTest {
         String subject = rsaJwtTokenUtil.getSubject(jwts);
         log.error("subject = {}", subject);
     }
-
 
 }
