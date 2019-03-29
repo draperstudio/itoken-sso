@@ -1,4 +1,4 @@
-package com.draper.itoken.sso.util;
+package com.draper.itoken.sso.common.util;
 
 import com.draper.itoken.core.util.RSAJWTUtil;
 import com.draper.itoken.sso.domain.Const;
