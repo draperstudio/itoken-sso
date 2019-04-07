@@ -1,15 +1,9 @@
 package com.draper.itoken.sso.service.impl;
 
-<<<<<<< HEAD
 import com.draper.itoken.sso.domain.User;
 import com.draper.itoken.sso.service.AuthService;
-import com.draper.itoken.sso.util.RsaJwtTokenUtil;
-=======
 import com.draper.itoken.sso.common.util.RedisUtil;
-import com.draper.itoken.sso.domain.User;
-import com.draper.itoken.sso.service.AuthService;
 import com.draper.itoken.sso.common.util.RsaJwtTokenUtil;
->>>>>>> dev_eureka
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.AuthenticationManager;
@@ -36,12 +30,9 @@ public class AuthServiceImpl implements AuthService {
     @Autowired
     private UserDetailsService userDetailsService;
 
-<<<<<<< HEAD
-=======
     @Autowired
     private RedisUtil redisUtil;
 
->>>>>>> dev_eureka
     @Override
     public Boolean register(User user) {
         return null;
@@ -54,10 +45,7 @@ public class AuthServiceImpl implements AuthService {
         SecurityContextHolder.getContext().setAuthentication(authentication);
         UserDetails userDetails = userDetailsService.loadUserByUsername(user.getUsername());
         String token = jwtTokenUtil.generateToken(userDetails);
-<<<<<<< HEAD
-=======
         redisUtil.set(token, "", 1000 * 60 * 60 * 24 * 3);// 三天
->>>>>>> dev_eureka
         return token;
     }
 

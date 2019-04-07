@@ -3,3 +3,4 @@ package-lock.json
 node_modules
 itoken-sso.iml
 src/main/resources/application-db.yml
+*.rdb
