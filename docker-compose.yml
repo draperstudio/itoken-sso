@@ -1,0 +1,8 @@
+version: "3.7"
+services:
+  itoken-sso:
+    restart: always
+    image: itoken-sso
+    container_name: itoken-sso
+    ports:
+      - 8771:8771
